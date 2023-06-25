@@ -30,7 +30,7 @@ To get started with the CNC plotter machine, follow these steps:
 6. Place a sheet of paper or a drawing surface on the flat surface where you want the plotter to draw.
 7. Power on the Arduino Uno and initiate communication with the plotter machine.
 8. If you get stucked with any step, you can give a look for the original article [here](https://electricdiylab.com/how-to-make-arduino-mini-cnc-plotter-machine/).
-9. Output
+9. Output, [our machine while drawing](https://drive.google.com/file/d/1T6XbWHDwXpsRdm7keNW0uuRVcscyL0hK/view).
 ![output](output.jpg)
 
 ## Components
