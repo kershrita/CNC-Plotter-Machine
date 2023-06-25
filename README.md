@@ -22,27 +22,25 @@ Using Arduino Uno and a few resources, we have designed a CNC Plotter Machine th
 
 To get started with the CNC plotter machine, follow these steps:
 
-Assemble the hardware components according to the provided schematic diagram.
-    Connect the stepper motors to the motor driver, and then connect the motor driver to the Arduino Uno.
-    Connect the CD-ROM drive to the Arduino Uno.
-    Install the required libraries and upload the Arduino sketch to the Arduino Uno.
-    Adjust the pen holder to securely hold the pen or marker.
-    Place a sheet of paper or a drawing surface on the flat surface where you want the plotter to draw.
-    Power on the Arduino Uno and initiate communication with the plotter machine.
-
-![Circuit Diagram](circuit.jpg)
-
-6. Put your finger on the sensor, wait some seconds then the measurments will appear in the LCD screen.
+1. Assemble the hardware components according to this [video](https://youtu.be/Gm6bH3p6cNQ).
+2. Connect the CD-ROM stepper motors to the motor driver, and then connect the motor driver to the Arduino Uno.
+3. Download and install [Arduino IDE](https://www.arduino.cc/en/software), [Inkscape 0.91](https://inkscape.org/release/inkscape-0.91/?latest=1) and [Processing](https://processing.org/download).
+4. Install the [AFMotor](AFMotor.rar) Library, you can install it manually by downloading the files and install it into Arduino IDE or directly from library manager.
+5. Adjust the pen holder to securely hold the pen or marker.
+6. Place a sheet of paper or a drawing surface on the flat surface where you want the plotter to draw.
+7. Power on the Arduino Uno and initiate communication with the plotter machine.
+8. If you get stucked with any step, you can give a look for the original article [here](https://electricdiylab.com/how-to-make-arduino-mini-cnc-plotter-machine/).
+9. Output
+![output](output.jpg)
 
 ## Components
 
 - 1 * Arduino Uno
 - 1 * Motor Driver L293D Shield
+- 1 * Mini Servo Motor
 - 2 * CD-ROMs
 
 ## Usage
-
-Once the Heart Rate and SpO2 Measurements application is up and running, users can take advantage of the following functionalities:
 
 Once the CNC plotter machine is set up and connected, you can use various methods to control its movements and create drawings:
 
@@ -52,8 +50,9 @@ Once the CNC plotter machine is set up and connected, you can use various method
 
 ## Configuration
 
-The Heart Rate and SpO2 Measurements Project provides configuration options for users to personalize their experience. These options may include:
+The CNC plotter machine can be customized to suit your specific needs and preferences. Here are a few customization options:
 
-- **Threshold Customization**: Adjust the heart rate and SpO2 thresholds according to individual preferences or medical recommendations.
-- **Measurement Interval**: Set the frequency of heart rate and SpO2 measurements, determining how often the application records readings.
-- **Sensor Calibration**: Calibrate the heart rate and SpO2 sensor for accurate measurements based on personal factors or environmental conditions.
+- **Drawing Size**: Adjust the dimensions of the plotter machine to accommodate larger or smaller drawing surfaces.
+- **Pen Options**: Experiment with different pens or markers to achieve various line thicknesses and effects.
+- **Control Interface**: Develop a custom software interface to control the plotter machine and send commands more conveniently.
+- **Additional Features**: Expand the functionality of the plotter machine by adding sensors, an LCD display, or additional actuators.
