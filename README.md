@@ -70,11 +70,11 @@ We would like to acknowledge the following resources and libraries that have bee
 
 ## Contributing
 
-Thank you for considering contributing to the Kids Learning Program! We welcome any contributions that can enhance the program and make it even better for kids.
+Thank you for considering contributing to the CNC Plotter Machine! We welcome any contributions that can enhance the program and make it even better.
 
 ## License
 
-Kids Learning Program is released under the [MIT License](LICENSE).
+CNC Plotter Machine is released under the [MIT License](LICENSE).
 
 ## Contact
 
