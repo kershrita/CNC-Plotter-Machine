@@ -65,7 +65,7 @@ If you get stucked with any step, you can give a look for the original article *
 We would like to acknowledge the following resources and libraries that have been instrumental in developing CNC Plotter Machine:
 
 - **[Arduino IDE](https://www.arduino.cc/en/software)**:  An open-source integrated development environment (IDE) used for programming Arduino boards.
-- **[Inkscape 0.91](https://inkscape.org/release/inkscape-0.91/?latest=1)**: [Inkscape 0.91](https://inkscape.org/release/inkscape-0.91/?latest=1) 
+- **[Inkscape 0.91](https://inkscape.org/release/inkscape-0.91/?latest=1)**:  An open-source vector graphics editor used for creating and editing graphical assets.
 - **[Processing](https://processing.org/download)**: An open-source software sketchbook and development environment for creating interactive art, animations, and applications.
 
 ## Contributing
