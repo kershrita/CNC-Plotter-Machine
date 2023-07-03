@@ -4,11 +4,49 @@ Using Arduino Uno and a few resources, we have designed a CNC Plotter Machine th
 
 ## Table of Contents
 
-- [Features](#features)
-- [Getting Started](#getting-started)
-- [Components](#components)
+- [Installation](#installation)
 - [Usage](#usage)
-- [Configuration](#configuration)
+- [Features](#features)
+- [Documentation](#documentation)
+- [Acknowledgments](#acknowledgments)
+- [Contributing](#contributing)
+- [License](#license)
+- [FAQ](#faq)
+- [Contact](#contact)
+
+## Installation
+
+To get started with the CNC plotter machine, follow these steps:
+
+1. Assemble the hardware components according to this [video](https://youtu.be/Gm6bH3p6cNQ).
+
+- Components
+	- 1 * Arduino Uno
+	- 1 * Motor Driver L293D Shield
+	- 1 * Mini Servo Motor
+	- 2 * CD-ROMs
+
+2. Connect the CD-ROM stepper motors to the motor driver, and then connect the motor driver to the Arduino Uno.
+3. Download and install [Arduino IDE](https://www.arduino.cc/en/software), [Inkscape 0.91](https://inkscape.org/release/inkscape-0.91/?latest=1) and [Processing](https://processing.org/download).
+4. Install the [AFMotor](AFMotor.rar) Library, you can install it manually by downloading the files and install it into Arduino IDE or directly from library manager.
+5. Clone or Download the repository to your local machine using the following command:
+```
+git clone https://github.com/kershrita/CNC-Plotter-Machine.git
+```
+
+## Usage
+
+Once the CNC plotter machine is set up and connected, you are ready to use it:
+
+1. Adjust the pen holder to securely hold the pen or marker.
+2. Place a sheet of paper or a drawing surface on the flat surface where you want the plotter to draw.
+3. Power on the Arduino Uno and initiate communication with the plotter machine.
+4. Making gcode from images with Inkscape 0.91.There is ready gcode to test if you want.
+5. Open Processing IDE then open this [scetch](processing%20code/GCTRL.pde].
+6. Run the code, there is a window will appear choose Arduino board port then upload the gcode to the board.
+7. Output, [our machine while drawing](https://drive.google.com/file/d/1T6XbWHDwXpsRdm7keNW0uuRVcscyL0hK/view).
+
+![output](output.jpg)
 
 ## Features
 
@@ -18,42 +56,28 @@ Using Arduino Uno and a few resources, we have designed a CNC Plotter Machine th
 - **Customizable Pen Holder**: The plotter machine includes a pen holder that can be adjusted to accommodate different pen sizes and types.
 - **Compact and Portable**: The use of an Arduino Uno and a CD-ROM drive makes the CNC plotter machine compact and portable.
 
-## Getting Started
+## Documentation
 
-To get started with the CNC plotter machine, follow these steps:
+If you get stucked with any step, you can give a look for the original article **[here](https://electricdiylab.com/how-to-make-arduino-mini-cnc-plotter-machine/)**.
 
-1. Assemble the hardware components according to this [video](https://youtu.be/Gm6bH3p6cNQ).
-2. Connect the CD-ROM stepper motors to the motor driver, and then connect the motor driver to the Arduino Uno.
-3. Download and install [Arduino IDE](https://www.arduino.cc/en/software), [Inkscape 0.91](https://inkscape.org/release/inkscape-0.91/?latest=1) and [Processing](https://processing.org/download).
-4. Install the [AFMotor](AFMotor.rar) Library, you can install it manually by downloading the files and install it into Arduino IDE or directly from library manager.
-5. Adjust the pen holder to securely hold the pen or marker.
-6. Place a sheet of paper or a drawing surface on the flat surface where you want the plotter to draw.
-7. Power on the Arduino Uno and initiate communication with the plotter machine.
-8. There is ready gcode to test if you want.
-9. If you get stucked with any step, you can give a look for the original article [here](https://electricdiylab.com/how-to-make-arduino-mini-cnc-plotter-machine/).
-10. Output, [our machine while drawing](https://drive.google.com/file/d/1T6XbWHDwXpsRdm7keNW0uuRVcscyL0hK/view).
-![output](output.jpg)
+## Acknowledgments
 
-## Components
+We would like to acknowledge the following resources and libraries that have been instrumental in developing CNC Plotter Machine:
 
-- 1 * Arduino Uno
-- 1 * Motor Driver L293D Shield
-- 1 * Mini Servo Motor
-- 2 * CD-ROMs
+- **[Arduino IDE](https://www.arduino.cc/en/software)**:  An open-source integrated development environment (IDE) used for programming Arduino boards.
+- **[Inkscape 0.91](https://inkscape.org/release/inkscape-0.91/?latest=1)**: [Inkscape 0.91](https://inkscape.org/release/inkscape-0.91/?latest=1) 
+- **[Processing](https://processing.org/download)**: An open-source software sketchbook and development environment for creating interactive art, animations, and applications.
 
-## Usage
+## Contributing
 
-Once the CNC plotter machine is set up and connected, you can use various methods to control its movements and create drawings:
+Thank you for considering contributing to the Kids Learning Program! We welcome any contributions that can enhance the program and make it even better for kids.
 
-- **Direct Commands**: You can send direct commands to the Arduino Uno via a serial terminal or a custom software interface to control the plotter machine's movements.
-- **G-Code**: Generate G-code instructions using software such as Inkscape or CAD programs, and then send the G-code commands to the plotter machine for precise drawing.
-- **Predefined Patterns**: Utilize preconfigured patterns or designs by storing them in the Arduino's memory or by creating specific functions in the Arduino sketch.
+## License
 
-## Configuration
+Kids Learning Program is released under the [MIT License](LICENSE).
 
-The CNC plotter machine can be customized to suit your specific needs and preferences. Here are a few customization options:
+## Contact
 
-- **Drawing Size**: Adjust the dimensions of the plotter machine to accommodate larger or smaller drawing surfaces.
-- **Pen Options**: Experiment with different pens or markers to achieve various line thicknesses and effects.
-- **Control Interface**: Develop a custom software interface to control the plotter machine and send commands more conveniently.
-- **Additional Features**: Expand the functionality of the plotter machine by adding sensors, an LCD display, or additional actuators.
+- Mail: ashrafabdulkhaliq80@gmail.com
+- LinkedIn: https://www.linkedin.com/in/ashraf-abdulkhaliq
+- GitHub: https://github.com/kershrita
