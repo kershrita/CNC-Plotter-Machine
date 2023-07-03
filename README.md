@@ -11,7 +11,6 @@ Using Arduino Uno and a few resources, we have designed a CNC Plotter Machine th
 - [Acknowledgments](#acknowledgments)
 - [Contributing](#contributing)
 - [License](#license)
-- [FAQ](#faq)
 - [Contact](#contact)
 
 ## Installation
