@@ -1,82 +1,130 @@
 # CNC Plotter Machine
 
-Using Arduino Uno and a few resources, we have designed a CNC Plotter Machine that has the ability to draw with a pen via G-Code. This machine can draw with dimensions of 4 * 4 cm, and you can design a drawing machine with larger dimensions than these by enlarging the size of the x axis and y axis according to your requirements.
+> End-to-end intelligent plotting pipeline that converts vector artwork into motion commands and executes them on a low-cost 2-axis CNC pen plotter.
 
-## Table of Contents
+## Overview
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Features](#features)
-- [Documentation](#documentation)
-- [Acknowledgments](#acknowledgments)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
+This project is a full stack cyber-physical system that combines geometry processing, command streaming, and embedded motion control to produce accurate pen plots from digital designs.
 
-## Installation
+Instead of focusing only on firmware, the repository captures the complete runtime pipeline:
 
-To get started with the CNC plotter machine, follow these steps:
+- Design-to-G-code conversion via an Inkscape extension.
+- Host-side orchestration and serial streaming through a Processing control application.
+- Real-time command interpretation and actuation on Arduino firmware.
 
-1. Assemble the hardware components according to this [video](https://youtu.be/Gm6bH3p6cNQ).
+Real-world use cases:
 
-- Components
-	- 1 * Arduino Uno
-	- 1 * Motor Driver L293D Shield
-	- 1 * Mini Servo Motor
-	- 2 * CD-ROMs
+- Low-cost prototyping for education, robotics labs, and rapid visual testing.
+- Signature, logo, and shape plotting for maker workflows.
+- Baseline platform for intelligent path planning and vision-assisted calibration research.
 
-2. Connect the CD-ROM stepper motors to the motor driver, and then connect the motor driver to the Arduino Uno.
-3. Download and install [Arduino IDE](https://www.arduino.cc/en/software), [Inkscape 0.91](https://inkscape.org/release/inkscape-0.91/?latest=1) and [Processing](https://processing.org/download).
-4. Install the [AFMotor](AFMotor.rar) Library, you can install it manually by downloading the files and install it into Arduino IDE or directly from library manager.
-5. Clone or Download the repository to your local machine using the following command:
-```
-git clone https://github.com/kershrita/CNC-Plotter-Machine.git
-```
+## Architecture
 
-## Usage
+Core components:
 
-Once the CNC plotter machine is set up and connected, you are ready to use it:
+1. Input and Planning Layer
+- Inkscape extension parses vector paths and converts them into plotter-compatible G-code.
+- Sample jobs in gcode tests provide repeatable validation inputs.
 
-1. Adjust the pen holder to securely hold the pen or marker.
-2. Place a sheet of paper or a drawing surface on the flat surface where you want the plotter to draw.
-3. Power on the Arduino Uno and initiate communication with the plotter machine.
-4. Making gcode from images with Inkscape 0.91.There is ready gcode to test if you want.
-5. Open Processing IDE then open this [scetch](processing%20code/GCTRL.pde].
-6. Run the code, there is a window will appear choose Arduino board port then upload the gcode to the board.
-7. Output, [our machine while drawing](https://drive.google.com/file/d/1T6XbWHDwXpsRdm7keNW0uuRVcscyL0hK/view).
+2. Host Control Layer
+- Processing app manages serial connectivity, manual jog commands, and file-based G-code streaming.
+- Streaming flow is stateful and command-driven, reducing accidental mixed-mode control.
 
-![output](output.jpg)
+3. Embedded Execution Layer
+- Arduino firmware interprets movement and pen commands.
+- AFMotor-based stepper control and servo pen-up/pen-down logic execute the trajectory.
+- Workspace boundaries and motion constants define safe plotting limits.
+
+4. Physical Actuation Layer
+- Dual CD-ROM stepper axes provide X/Y movement.
+- Servo channel controls pen contact state.
+
+### Architecture Diagram
+
+![CNC Plotter System Architecture](assets/architecture-diagram.png)
 
 ## Features
 
-- **Versatile Drawing Capability**: The CNC plotter machine can draw various patterns, shapes, and text based on the provided input.
-- **Precise Movement Control**: The machine uses stepper motors to precisely control the positioning of the pen, ensuring accurate drawing.
-- **Easy Control Interface**: The Arduino Uno serves as the control unit, allowing you to send commands to the plotter machine.
-- **Customizable Pen Holder**: The plotter machine includes a pen holder that can be adjusted to accommodate different pen sizes and types.
-- **Compact and Portable**: The use of an Arduino Uno and a CD-ROM drive makes the CNC plotter machine compact and portable.
+- End-to-end pipeline from vector art to physical plot.
+- Offline G-code testing with reusable sample drawings.
+- Manual jog and homing controls in the host UI.
+- Deterministic pen state control using M300 command mapping.
+- Configurable step-per-millimeter calibration for machine tuning.
+- Compact hardware profile based on widely available components.
 
-## Documentation
+## Technical Highlights
 
-If you get stucked with any step, you can give a look for the original article **[here](https://electricdiylab.com/how-to-make-arduino-mini-cnc-plotter-machine/)**.
+- System design over isolated scripts: each layer has a clear responsibility and interface.
+- Safety-oriented constraints: firmware-level min/max bounds reduce out-of-range motion.
+- Streaming architecture: host and firmware separation enables easier debugging and extension.
+- Embedded parsing strategy: line-buffered command handling supports long G-code jobs.
+- Extensibility path: architecture can be upgraded with trajectory smoothing, adaptive speed control, or perception-based correction.
 
-## Acknowledgments
+## Tech Stack
 
-We would like to acknowledge the following resources and libraries that have been instrumental in developing CNC Plotter Machine:
+- Embedded: Arduino Uno, C/C++, Servo library, AFMotor.
+- Host control: Processing (Java mode), processing.serial.
+- Geometry and conversion: Inkscape extension (Python), SVG parsing utilities.
+- Hardware: L293D motor shield, 2x CD-ROM stepper assemblies, mini servo.
+- Job assets: curated G-code test set for repeatable functional checks.
 
-- **[Arduino IDE](https://www.arduino.cc/en/software)**:  An open-source integrated development environment (IDE) used for programming Arduino boards.
-- **[Inkscape 0.91](https://inkscape.org/release/inkscape-0.91/?latest=1)**:  An open-source vector graphics editor used for creating and editing graphical assets.
-- **[Processing](https://processing.org/download)**: An open-source software sketchbook and development environment for creating interactive art, animations, and applications.
+## Getting Started
 
-## Contributing
+### 1. Hardware Assembly
 
-Thank you for considering contributing to the CNC Plotter Machine! We welcome any contributions that can enhance the program and make it even better.
+- Assemble the X/Y frame using two CD-ROM linear mechanisms.
+- Connect motors through L293D shield to Arduino Uno.
+- Mount and wire servo for pen lift.
+
+Reference build video: https://youtu.be/Gm6bH3p6cNQ
+
+### 2. Software Setup
+
+Install:
+
+- Arduino IDE
+- Processing IDE
+- Inkscape 0.91 or a compatible version for the included extension
+
+Install dependencies:
+
+- AFMotor library from [AFMotor.rar](AFMotor.rar)
+
+Clone repository:
+
+```bash
+git clone https://github.com/kershrita/CNC-Plotter-Machine.git
+cd CNC-Plotter-Machine
+```
+
+### 3. Flash Firmware
+
+- Open arduino code/arduino code.ino in Arduino IDE.
+- Select board and serial port.
+- Upload firmware to Arduino Uno.
+
+### 4. Run Host Controller
+
+- Open processing code/GCTRL/GCTRL.pde in Processing.
+- Run the sketch and select the correct serial port using p.
+- Press g to load a G-code file from gcode tests.
+- Stream commands and monitor drawing execution.
+
+## Results
+
+Observed outcomes from the current implementation:
+
+- Successful pen plotting on a 40 mm x 40 mm workspace envelope (configurable in firmware).
+- Reproducible execution of multiple test jobs from gcode tests.
+- Stable command-to-actuation behavior for core commands (G1, G4, M300).
+
+Artifacts:
+
+- Demonstration video: [Watch the CNC plotter demo](https://drive.google.com/file/d/1T6XbWHDwXpsRdm7keNW0uuRVcscyL0hK/view)
+- Sample machine output:
+
+![CNC Plotter Output](assets/plotter-output.jpg)
 
 ## License
 
-CNC Plotter Machine is released under the [MIT License](LICENSE).
-
-## Contact
-
-- Mail: ashrafabdulkhaliq80@gmail.com
-- LinkedIn: https://www.linkedin.com/in/ashraf-abdulkhaliq
-- GitHub: https://github.com/kershrita
+Released under the [MIT License](LICENSE).
